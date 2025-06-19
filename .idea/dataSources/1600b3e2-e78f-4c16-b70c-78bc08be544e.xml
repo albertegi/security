@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1219</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1222</IntrospectionStateNumber>
       <ServerVersion>17.5</ServerVersion>
       <StartupTime>1750046817</StartupTime>
       <TimeZones>true ACDT
@@ -808,7 +808,7 @@ false Zulu
 13459||10|C|G
 13459||-9223372036854775808|U|G
 13459||10|U|G</Grants>
-      <IntrospectionStateNumber>1219</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1222</IntrospectionStateNumber>
       <ObjectId>24576</ObjectId>
       <OwnerName>albert</OwnerName>
     </database>
@@ -4255,8 +4255,8 @@ false Zulu
     <schema id="268" parent="4" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1219</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-06-19.00:56:02</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1222</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-06-19.01:21:49</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -7618,5 +7618,66 @@ false Zulu
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
+    <sequence id="513" parent="268" name="_user_seq">
+      <ObjectId>24577</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>1220</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>albert</OwnerName>
+    </sequence>
+    <table id="514" parent="268" name="_user">
+      <ObjectId>24578</ObjectId>
+      <StateNumber>1221</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>albert</OwnerName>
+    </table>
+    <column id="515" parent="514" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1221</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="516" parent="514" name="email">
+      <Position>2</Position>
+      <StateNumber>1221</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="517" parent="514" name="first_name">
+      <Position>3</Position>
+      <StateNumber>1221</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="518" parent="514" name="last_name">
+      <Position>4</Position>
+      <StateNumber>1221</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="519" parent="514" name="password">
+      <Position>5</Position>
+      <StateNumber>1221</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="520" parent="514" name="_user_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24583</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1221</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="521" parent="514" name="_user_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24584</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1221</StateNumber>
+      <UnderlyingIndexId>24583</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>
