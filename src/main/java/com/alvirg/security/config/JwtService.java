@@ -18,8 +18,9 @@ import java.util.function.Function;
 public class JwtService {
     private static final String SECRET_KEY = "369ac70b3764262f3c2a1dbba454483f51a4fdb39d2a5233836fcf1a75328975";
 
-    public String extractUserName(String jwtToken) {
-        return extractClaim(jwtToken, Claims::getSubject);
+    // method to extract username
+    public String extractUserName(String token) {
+        return extractClaim(token, Claims::getSubject);
     }
 
     // method to extract a single claim
@@ -46,6 +47,21 @@ public class JwtService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    // method to validate a token. valid if the token belongs to userDetails or if the username from the
+    // token is equal to the username coming from the database
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        final String username = extractUserName(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    private boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
     }
 
     // a method to extract claims
