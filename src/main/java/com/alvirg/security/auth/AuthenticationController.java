@@ -2,6 +2,7 @@ package com.alvirg.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
+
+    private final AuthenticationService service;
+
     /*this controller will have two endpoints that will allow me
     to create or register a new account and authenticate an
     existing user
@@ -20,16 +24,16 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody registerRequest
+            @RequestBody RegisterRequest request
     ){
-        //
+        return ResponseEntity.ok(service.register(request));
     }
 
     @PostMapping("/autheticate")
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody AuthenticationRequest
+            @RequestBody AuthenticationRequest request
             ){
-        //
+        return ResponseEntity.ok(service.authenticate(request));
     }
 
 
